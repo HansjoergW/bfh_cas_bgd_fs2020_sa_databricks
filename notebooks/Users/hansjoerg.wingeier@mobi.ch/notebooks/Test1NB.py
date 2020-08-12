@@ -66,3 +66,10 @@ dbutils.fs.help("put")
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ## Useful links
+# MAGIC 
+# MAGIC * https://docs.databricks.com/data/index.html Basics about data in Databricks
+# MAGIC * https://docs.databricks.com/data/databricks-file-system.html DBFS access
+# MAGIC * https://docs.databricks.com/data/filestore.html FileStore -> web-accessbile section of the DBFS
+# MAGIC * https://towardsdatascience.com/databricks-how-to-save-files-in-csv-on-your-local-computer-3d0c70e6a9ab examples on towardsdatascience
