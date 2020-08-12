@@ -1,13 +1,35 @@
 # Databricks notebook source
-import os
-print(os.getcwd())
-
-os.listdir("../../tmp")
-dbutils.fs.ls("/usr/")
+# MAGIC %md
+# MAGIC # Basic Filesystem Handling
 
 # COMMAND ----------
 
-display(dbutils.fs.ls("/usr/"))
+# MAGIC %md
+# MAGIC ## List the subfolders of some important folders
+
+# COMMAND ----------
+
+import os
+print("cwd              ", os.getcwd()) # display the current working directory
+print("content of cwd   ", os.listdir()) # content
+print("root dir         ", os.listdir("/"))
+print("lokal disk       ", os.listdir("/local_disk0"))
+print("content of /dbfs ", os.listdir("/dbfs/")) # root of the dbfs system
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Display the content of a the root of dbfs with dbutils.fs.ls
+
+# COMMAND ----------
+
+dbutils.fs.ls("/")  # equals to os.listdir("/dbfs/")
+# display(dbutils.fs.ls("/")) # displays the content as a table
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Example on how to download data from the net and store it to the dbfs
 
 # COMMAND ----------
 
@@ -15,21 +37,32 @@ import requests
 url = "https://www.sec.gov/include/ticker.txt"
 r = requests.get(url, allow_redirects=True)
 open('/dbfs/usr/ticker.txt', 'wb').write(r.content)
-# dbutils.fs.cp('dbfs:/usr/ticker.txt','dbfs:/FileStore/ticker.txt')
-#open('/usr/ticker.txt', 'r').readlines()
+lines = open('/dbfs/usr/ticker.txt', 'r').readlines()
+print(lines[0:5])
 
 # COMMAND ----------
 
-type(dbutils)
+# MAGIC %md
+# MAGIC ##  Store data in the FileStore
 
 # COMMAND ----------
 
-dbutils.fs.put("/usr/mytestfolder/pure.txt", "some text")
+dbutils.fs.put("/FileStore/mytestfolder/pure.txt", "some text", overwrite=True)
+# content of the FileStore can be accessed from a browser
 # access by browser https://adb-2780677283537437.17.azuredatabricks.net/files/mytestfolder/pure.txt?o=<oauthId in url of browser>
 
 # COMMAND ----------
 
-os.listdir("/usr/")
+# MAGIC %md
+# MAGIC ##  Show help pages of dbutils
+
+# COMMAND ----------
+
+dbutils.fs.help()
+
+# COMMAND ----------
+
+dbutils.fs.help("put")
 
 # COMMAND ----------
 
