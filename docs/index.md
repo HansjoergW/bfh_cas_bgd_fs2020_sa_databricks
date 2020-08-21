@@ -8,4 +8,5 @@ Trials
 * [00_02_Databricks_Filesystem_Access](./00_02_Databricks_Filesystem_Access.html)
 
 Preprocessing
-* [01_01_Download_SEC_DATA](./01_01_Download_SEC_Data.html)
+* [01_01_Download_SEC_Data](./01_01_Download_SEC_Data.html)
+* [01_02_Join_SEC_Data](./01_02_Join_SEC_Data.html)
