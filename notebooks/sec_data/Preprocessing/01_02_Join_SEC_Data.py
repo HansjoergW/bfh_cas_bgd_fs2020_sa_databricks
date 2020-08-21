@@ -48,6 +48,13 @@ Path(extract_temp_folder).mkdir(parents=True, exist_ok=True) # create directory 
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC In the following method, two adaptions had to be made (compared to the standalone version). <br>
+# MAGIC First, there was no f_temp.close() after writing. This resulted in timing issues: when spark.read.csv tried to read from that file it wasn't always already visible and it failed.<br>
+# MAGIC Second, it seems the spark commands on databricks always operate on the DBFS. So in order for the code to work it was necessary to remove "/dbfs" from the pfad when calling sprad.read.csv or df.write.csv().
+
+# COMMAND ----------
+
 def read_csv_in_zip_into_df_extract(zip_file: str, data_file: str) -> DataFrame:
     """
        Extracts the data from zipfile and stores it on disk. 
@@ -61,11 +68,9 @@ def read_csv_in_zip_into_df_extract(zip_file: str, data_file: str) -> DataFrame:
             with open(tempfile, "wb+") as f_temp:
                 data = f.read()
                 f_temp.write(data)
-                f_temp.seek(0)
                 f_temp.close()
                 f_temp_dbfs  = tempfile.replace("/dbfs","")
          
-                #df = spark.read.format('csv').options(header='true', sep="\t", inferSchema='true').load(f_temp_dbfs)
                 df = spark.read.csv(f_temp_dbfs, sep='\t', header=True)
                 return df
 
