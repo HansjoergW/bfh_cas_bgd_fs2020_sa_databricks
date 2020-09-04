@@ -10,4 +10,4 @@ Trials
 Preprocessing
 * [01_01_Download_SEC_Data](./01_01_Download_SEC_Data.html)
 * [01_02_Join_SEC_Data](./01_02_Join_SEC_Data.html)
-* [01_03_Merge_To_Single_Parquet(./01_03_Merge_To_Single_Parquet.html)
+* [01_03_Merge_To_Single_Parquet](./01_03_Merge_To_Single_Parquet.html)
