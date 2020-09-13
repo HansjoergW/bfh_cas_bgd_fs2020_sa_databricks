@@ -13,3 +13,5 @@ UC 01 "BalanceSheet"
 * [01_03_Merge_To_Single_Parquet](./01_03_Merge_To_Single_Parquet.html)
 * [01_04_Analysis_Whole_Data](./01_04_Analysis_Whole_Data.html)
 * [01_05_Filter_And_Partition](./01_05_Filter_And_Partition.html)
+* [01_06_Pivot_BS_Data](./01_06_Pivot_BS_Data.html)
+* [01_07_Analysis_BalanceSheet](./01_07_Analysis_BalanceSheet.html)
